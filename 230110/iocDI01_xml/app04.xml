@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 1) 고전적 방법 (직접 new) -->
+	<bean class="iocDI01_xml.SsTVsi" id="tvs" lazy-init="true" />
+
+<!-- 2) IOC/DI -> 생성자 주입  
+	=> bean 의 하위 Tag 로 생성자 매개변수 정의 -->
+	<bean class="iocDI01_xml.LgTVsi" id="tvl" lazy-init="true">
+		<constructor-arg index="0" ref="spb" />
+		<constructor-arg index="1" value="Silver" />
+		<constructor-arg name="price" value="2200000" />
+	</bean>
+<!-- ** Speaker interface 사용 
+	=> SpeakerA, SpeakerB  -->
+	<bean class="iocDI01_xml.SpeakerA" id="spa" lazy-init="true" />
+	<bean class="iocDI01_xml.SpeakerB" id="spb" lazy-init="true" />
+
+<!-- 3) IOC/DI -> setter 주입 
+	=> setter 메서드는 <bean> 생성 직후 컨테이너가 자동 호출 -->
+	<bean class="iocDI01_xml.AiTVsi" id="tva" lazy-init="true">
+		<property name="speaker" ref="spa" />
+		<property name="color" value="Black" />
+		<property name="price" value="3300000" />
+	</bean>
+
+</beans>

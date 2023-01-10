@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- ** 설정화일
+		=> 스프링 컨테이너에게 Bean 생성을 요청하는 작업지시서 ** --> 
+<!-- * 클래스 경로는 패키지가 포함된 경로를 지정해야 함 => 패키지.클래스명
+	 * 기본적으로 등록된 모든 bean을 생성함 
+	 	=> <bean....> Tag : new 생성자() 과 동일한 기능
+	 	=> 특별히 생성자의 매개변수에 대한 Tag 가 없다면 default 생성자를 사용함
+		=> lazy-init="default" : 무조건 생성 ( = false )
+		=> lazy-init="true" : 
+				메모리 낭비 막기 위해 컨테이너 구동 시점이 아닌
+				해당빈<bean> 을 사용하는(호출) 시점에 생성 
+	 * 싱글톤 생성이 기본 
+	 	=> scope="prototype" / "singleton" : 기본이 싱글톤	
+	 	- singleton : 한 개의 객체만 생성하고 계속 재사용(default)
+		- prototype : 빈을 요청할 때마다 객체를 새로 생성
+		- request : 웹 환경에서 유효한 scope. 하나의 요청마다 bean 객체를 새로 생성함.
+		- session : 웹 환경에서 유효한 scope. 첫요청 들어온 순간부터 해당세션이 유효한 동안 bean 객체를 유지시킴.
+	 	- 애노테이션 방식에서는 @Scope 애노테이션으로 지정.
+ -->	
+
+	<bean class="iocDI01_xml.SsTVi" id="tvs" lazy-init="true" scope="prototype" />
+	<bean class="iocDI01_xml.LgTVi" id="tv" lazy-init="true" scope="singleton"/>
+
+</beans>

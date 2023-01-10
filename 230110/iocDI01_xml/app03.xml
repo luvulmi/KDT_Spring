@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- 1) 고전적 방법 (직접 new) -->
+	<bean class="iocDI01_xml.SsTVs" id="tvs" lazy-init="true" />
+
+<!-- 2) IOC/DI -> 생성자 주입 
+	=> 인자의 종류 (type , 갯수) 에따라 일치하는 생성자가 호출됨
+	=> index(0,1,2..) , name(생성자 매개변수명) 속성을 적용하면 더욱 정확하게 매칭가능함
+	=> 매개변수1개, 2개, 3개 모두 Test
+-->
+	<bean class="iocDI01_xml.LgTVs" id="tvl" lazy-init="true"> 
+		<constructor-arg name="speaker" ref="sp" />
+		<constructor-arg index="1" value="Yellow"  />
+		<constructor-arg name="price" value="1234500" />
+	</bean>
+	<bean class="iocDI01_xml.Speaker" id="sp" lazy-init="true" />
+
+<!-- 3) IOC/DI -> setter 주입 
+	=> setter 메서드는 <bean> 생성 직후 컨테이너가 자동 호출
+	=> 매개변수1개, 2개, 3개 모두 Test
+	=> setter 찾는 규칙 ( setPrice )  
+	   -> name에 지정된 값으로 setter메서드명 setSpeaker, setColor 를 찾기때문에
+	   	  setter 메서드명과 변수명을 일치시켜야함. 
+-->
+	<bean class="iocDI01_xml.AiTVs" id="tva" lazy-init="true"> 
+		<property name="speaker" ref="sp"/>
+		<property name="color" value="Red" />
+		<property name="price" value="7788000" />
+	</bean>
+
+</beans>
