@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- ** xml 을 통해 JavaConfig 사용하기 **
+		=> JavaConfig 파일을 생성 (<bean.. 설정) 해주고 , 
+		=> 이 파일의 @을 인식 가능 하도록 해줌 -->
+	<bean class="iocDI03_jc.JavaConfig04" />
+	<context:annotation-config />
+
+	<!-- SsTVsi xml 생성 -->
+	<bean class="iocDI03_jc.SsTVsi" id="tvs" lazy-init="true" />
+	
+ 	<!-- SpeakerA xml 생성후 @Autowired Test  -->
+	<bean class="iocDI03_jc.SpeakerA" id="spa" lazy-init="true" />
+
+</beans>

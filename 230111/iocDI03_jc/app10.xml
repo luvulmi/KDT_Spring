@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- JavaConfig 파일에서 @, xml 과 병행사용 Test 
+		=> SsTVs 생성   -->
+	<bean class="iocDI03_jc.SsTVsi" id="tvs" lazy-init="true" />
+	
+<!-- AiTVsi 생성후  Speaker @Autowired 확인 -->
+	<bean class="iocDI03_jc.AiTVsi" id="tva" />
+	
+<!-- Speaker 생성 후 @Autowired 확인 
+	=> spb 는 LgTVsi 의 생성자로 전달안됨 -->
+	<bean class="iocDI03_jc.SpeakerA" id="spa" lazy-init="true" />
+	<bean class="iocDI03_jc.SpeakerB" id="spb" lazy-init="true" />
+
+</beans>

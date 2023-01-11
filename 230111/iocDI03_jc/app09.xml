@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- JavaConfig 파일에서 xml 과 병행사용 Test 
+		=> AiTVs 생성 & setter 주입
+		   Speaker_sp 는 JC에서 생성후 전달여부 확인  -->
+	<bean class="iocDI03_jc.AiTVs" id="tva" lazy-init="true">
+		<property name="speaker" ref="sp" />
+		<property name="color" value="Pink" />
+		<property name="price" value="9988000" />
+	</bean>	
+
+</beans>
