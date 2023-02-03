@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>** Ajax Basic Test **</title>
+  <script src="jquery-3.2.1.min.js"></script>
+  <script src="ax02_xhrTest.js"></script>
+  <script src="ax04_jqTest.js"></script>
+</head>
+
+<body>
+
+  <body>
+    <pre><h3>
+** Ajax : Asynchronous(비동기) JavaScript And XML
+ => 서버와의 비동기식 통신
+ => 자바스크립트로 HTTP 요청을 보내서 XML 응답을 받아서 사용하는 기술
+ => XMLHttpRequest : 통신을 담당하는 객체 
+<hr> 
+** Ajax Basic Test **
+</h3></pre>
+    <form action="#">
+      1) Basic Test =>
+      <input type="button" value="Ax_Basic" onclick="startMethod()"><br><br>
+      --- Parameter Test -----------------------------------------------<br>
+      I D : <input type="text" id="id" name="id" value="banana"><br>
+      P W : <input type="password" id="password" name="password" value="12345!"><br>
+      Name: <input type="text" id="name" name="name" value="바나나"><br>
+      <br>
+      2) JS Parameter Test =>
+      <input type="button" value="JS_Get" onclick="startMethodG()">&nbsp;
+      <input type="button" value="JS_Post" onclick="startMethodP()"><br><br>
+
+      3) JQ Parameter Test =>
+      <input type="button" value="JQ_G/P" id="jqTest"><br>
+    </form>
+    <hr>
+    <div id="resultArea"></div>
+  </body>
+
+</html>

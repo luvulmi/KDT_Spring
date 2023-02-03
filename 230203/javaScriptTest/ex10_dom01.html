@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>** Dom01 : JS Basic Process **</title>
+	<script>
+		onload = () => {
+			alert("** Process 0 **");
+			// 적용안됨 (id에 해당하는 Tag 엘리먼트가 생성되기 이전이므로)
+			document.getElementById('p1').style.color = "Red";
+			document.getElementById('p3').style.color = "Blue";
+		} //onload
+	</script>
+</head>
+
+<body>
+	<pre><h3>
+** Dom01 : JS Basic Process **
+=> DOM : Document Object Model (문서객체모델)
+
+1. JS 기본 실행 흐름 Test
+<span id="p1">** Process 1 **</span>
+<script>
+	alert("** Process 2 **");
+</script>
+<span id="p3">** Process 3 **</span>
+
+=> 실행순서 예측 :  p0 -> p2:red,green -> p1 -> p3
+            	   ( -> red,green script 구문 적용안됨 )
+=> 이유 : 웹 페이지 생성순서 (script 구문을 실행할때는 p1,p3 이 생성되기전 이기때문 )
+		 body 영역의 태그 생성 이전에 head 영역의 스크립트가 실행 되므로
+         이때는 태그를 인식 할 수 없기 때문에 스크립트가 반영 안됨.	
+=> 해결
+	1) 실행순서 조정 : script 구문을 뒤쪽에 둔다.
+	2) 이벤트를 적용 : 문서준비 완료후 script 구문이 실행되도록함.
+				( window.onload -> ~dom2 에서) 
+</h3></pre>
+	<script>
+		alert("** Process 3 **");
+		document.getElementById('p1').style.color = "Red";
+		document.getElementById('p3').style.color = "Blue";
+	</script>
+	=> 해결1) 의 실행순서 : p0 -> p2 -> p1 -> p3 : :red,green script 적용
+
+</body>
+
+</html>
